@@ -4,7 +4,4 @@ const API = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/${endPoin
 
 const state = {
   events: [],
-  event: null,
-  guests: [],
-  rsvps: [],
 };
