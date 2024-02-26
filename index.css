@@ -5,3 +5,17 @@ h1 {
 .attribute{
     font-weight: bold;
 }
+
+ul {
+    margin: 0 auto;
+    text-align: center;
+    columns: 3;
+}
+
+li {
+    display: inline-block;
+    vertical-align: top;
+    list-style-position:inside;
+    border: 1px solid black;
+    border-radius: 5px;
+}
