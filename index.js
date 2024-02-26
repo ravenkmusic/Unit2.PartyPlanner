@@ -13,3 +13,12 @@ const addPartyForm = document.querySelector("#addParty");
 
 //event listener for adding parties
 addPartyForm.addEventListener("submit", addParty);
+
+//function that displays all events including user's added events
+
+async function displayAllParties(){
+  await getAllParties();
+  getParties();
+}
+displayAllParties();
+
