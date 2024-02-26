@@ -42,16 +42,16 @@ function getParties () {
   const partyListing = state.parties.map((party) => {
 
     const li = document.createElement("li");
-    const partyName = party.name;
+    const partyName = party.name.toUpperCase();
     const partyDescription = party.description;
     const partyDate = party.date;
     const partyLocation = party.location;
     li.innerHTML = `
     <h2>${partyName}</h2>
-    Description: ${partyDescription} <br>
-    Date: ${partyDate} <br>
-    Location: ${partyLocation}
-    `;
+    <p class="attribute">Description: </p> ${partyDescription} <br>
+    <p class ="attribute"> Date: </p> ${partyDate} <br>
+    <p class = "attribute"> Location: </p> ${partyLocation}
+    <p><button id="deleteParty">Delete</button></p>`;
     return li;
   });
 
