@@ -1,5 +1,4 @@
-const COHORT = "2308-acc-et-web-pt-b";
-const API = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/events`;
+const API = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/2308-acc-et-web-pt-b/events`;
 
 const state = {
   parties: [],
@@ -71,7 +70,8 @@ async function addParty(event){
       headers: { "Content-Type" : "application/json" },
       body: JSON.stringify({
         name: addPartyForm.name.value,
-        Date: addPartyForm.date.value,
+        date: new Date(addPartyForm.date.value),
+        location: addPartyForm.location.value,
         description: addPartyForm.description.value,
       }),
     });
