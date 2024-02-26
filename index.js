@@ -92,7 +92,7 @@ async function deleteParty(partyID){
     });
 
     if (!response.ok) {
-      throw new Error("Could not delete party, try again.");
+      throw new Error("Could not delete party, refresh page and try again.");
     }
 
     displayAllParties();
