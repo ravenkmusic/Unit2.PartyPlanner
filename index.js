@@ -7,13 +7,9 @@ const state = {
 //references
 const partyList = document.querySelector("#parties");
 const addPartyForm = document.querySelector("#addParty");
-const deletePartyButton = document.querySelector("#deleteParty");
 
 //event listener for adding parties
 addPartyForm.addEventListener("submit", addParty);
-
-//event listener for deleting parties
-//deletePartyButton.addEventListener("click", deleteParty);
 
 //function that synchronizes state and displays all events including user's added events
 async function displayAllParties(){
@@ -48,12 +44,13 @@ function getParties () {
     const partyDescription = party.description;
     const partyDate = party.date;
     const partyLocation = party.location;
+    const partyID = party.id;
     li.innerHTML = `
     <h2>${partyName}</h2>
     <p class="attribute">Description: </p> ${partyDescription} <br>
     <p class ="attribute"> Date: </p> ${partyDate} <br>
     <p class = "attribute"> Location: </p> ${partyLocation}
-    <p><button id="deleteParty">Delete</button></p>`;
+    <p><button onClick="deleteParty(${partyID})">Delete</button></p>`;
     return li;
   });
   //refresh list
@@ -82,6 +79,24 @@ async function addParty(event){
 
     displayAllParties();
   } catch (error) {
-    console.error(error);   
+    console.error("Error:", error);   
+  }
+}
+
+//delete party from API
+
+async function deleteParty(partyID){
+  try {
+    const response = await fetch(`${API}/${partyID}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not delete party, try again.");
+    }
+
+    displayAllParties();
+  } catch (error) {
+    console.error("Error:", error)
   }
 }
